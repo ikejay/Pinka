@@ -1,28 +1,53 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header></Header>
+    <Hero></Hero>
+    <div class="row">
+      <Product v-for="(prod, key) in prods" :key="key"></Product>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+
+import Header from "@/components/Header/header";
+import Hero from "@/components/Hero/hero";
+import Product from "@/components/Product/product";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    Hero,
+    Product
+  },
+  data() {
+    return{
+      prods: ['Cassava', 'Cocoa', 'Pigeon Pea', 'Watermelon', 'Cowpea']
+    }
   }
 }
 </script>
 
 <style>
+*{
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+.row {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 </style>
